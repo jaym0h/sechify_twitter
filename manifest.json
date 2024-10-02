@@ -37,5 +37,13 @@
     "_comment3": "Extension icon on browser toolbar",
     "action": {
         "default_popup": "popup.html"
+    },
+
+    "_comment4": "Firefox compatibility. ID is arbitrary",
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "jaymoh@sechify.com",
+            "strict_min_version": "58.0"
+        }
     }
 }
