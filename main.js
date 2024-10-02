@@ -61,5 +61,7 @@
             childList: true,
             subtree: true,
         });
+
+        callback();
     });
 })();

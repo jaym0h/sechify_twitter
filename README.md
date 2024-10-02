@@ -1,5 +1,5 @@
 # Sechify (Twitter)
--------------------------------------------------
+
 A chrome extension to add BlueSechi characters onto images on your Twitter feed. Works for both twitter.com and x.com.
 
 Took heavy inspiration and borrowed lots of code from chikenuwu's Sechify chrome extension.
