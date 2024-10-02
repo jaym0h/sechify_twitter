@@ -6,4 +6,4 @@ Took heavy inspiration and borrowed lots of code from chikenuwu's Sechify chrome
 
 chikenuwu: https://github.com/IsaacSohn/Sechify
 
-If you find any glaring problems, DM me on Twitter or something (@JayM0h).
+If you find any glaring problems, DM me on Discord or something (@jaymoh).
