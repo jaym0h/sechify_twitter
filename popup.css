@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    width: 220px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f1f1;
+}
+
+button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+} button:hover {
+    background-color: #45a049;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+} .profile img {
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+}
+
+.icons {
+    margin-top: 10px;
+} .icons a {
+    margin: 5px;
+    text-decoration: none;
+} .icons img {
+    height: 40px;
+}
+
+header {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
