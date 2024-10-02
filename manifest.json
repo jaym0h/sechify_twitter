@@ -7,7 +7,7 @@
         "128": "assets/icon/icon-128.png"
     },
     "description": "Invade Twitter images with a Blue Archive Sechi-drawn student!",
-    "host_permissions": ["https://twitter.com/*"],
+    "host_permissions": ["https://twitter.com/*", "https://x.com/*"],
     "permissions": [
         "storage"
     ],
@@ -15,7 +15,7 @@
     "_comment1": "Run main.js when site is loaded.",
     "content_scripts": [
         {
-            "matches": ["https://twitter.com/*"],
+            "matches": ["https://twitter.com/*", "https://x.com/*"],
             "js": ["main.js"],
             "run_at": "document_idle"
         }
