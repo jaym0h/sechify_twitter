@@ -22,7 +22,7 @@ button {
     background-color: #45a049;
 }
 
-.footer {
+.profile-container {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -51,4 +51,12 @@ header {
     font-size: 36px;
     font-weight: bold;
     margin-bottom: 20px;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+} footer img {
+    height: 1rem;
+    width: 1rem;
 }
