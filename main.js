@@ -1,5 +1,6 @@
 (() => {
     const numImages = 78;
+    const imageAlts = ['Image', 'Embedded video'];  // Image alt tags to look for
 
     // See whether overlays are enabled
     chrome.storage.local.get(['overlayEnabled'], (result) => {
@@ -8,20 +9,6 @@
 
         const enabled = result.overlayEnabled !== false;    // default = true if not set
         const opacity = enabled ? '1': '0';
-
-        // Grab all Twitter images
-        function getThumbnails() {
-            const thumbnails = document.getElementsByTagName('img');
-
-            // Loop through thumbnails, get index, get url, send over to merge to image
-            thumbnails.forEach((thumbnail) => {
-                const index = getRandomImageIndex();
-
-                // Get URL of random image
-                let overlayURL = getOverlayURL(index);
-                changeThumbnail(thumbnail, overlayURL);
-            });
-        }
 
         // Apply new thumbnails
         function changeThumbnail(thumbnail, overlayURL) {
@@ -44,20 +31,35 @@
 
         // Get URL of the overlay image
         function getOverlayURL(index) {
-            return chrome.runtime.getURL(`assets/images/${index}.png`);
+            return chrome.runtime.getURL(`assets/images/${index}.PNG`);
         }
 
+        // Function call whenever a page load is observed
+        const callback = function(mutationsList) {
+            // Loop through lists of nodes that were added on update (this helps us check for child nodes)
+            for(const { addedNodes } of mutationsList) {
+                // Check each individual node added
+                for(const node of addedNodes) {
+                    if(!node.tagName) continue; // Skip if node is not a page element
+
+                    // Look for images and add a random Sechi onto them
+                    if(node.tagName === 'IMG' && imageAlts.includes(node.alt)) {
+                        const index = getRandomImageIndex();
+
+                        // Get URL of random image
+                        let overlayURL = getOverlayURL(index);
+                        changeThumbnail(node, overlayURL);
+                    }
+                }
+            }
+        };
+
         // Observe the entire body of the document for changes
-        const observer = new MutationObserver(() => {
-            getThumbnails();
-        });
+        const observer = new MutationObserver(callback);
         observer.observe(document.body, {
             // Types of mutations to observe (changes to the site)
             childList: true,
             subtree: true,
         });
-
-        // Initial call to set thumbnails on page load
-        getThumbnails();
     });
 })();
