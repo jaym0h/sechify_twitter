@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize button text based on stored state
     chrome.storage.local.get(['overlayEnabled'], (result) => {
         const enabled = result.overlayEnabled !== false; // default to true if not set
-        toggleButton.textContent = enabled ? 'Disable Overlays' : 'Enabled Overlays';
+        toggleButton.textContent = enabled ? 'Disable Overlays' : 'Enable Overlays';
     });
 
     // Add click event listener to the toggle button
