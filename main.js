@@ -36,19 +36,21 @@
 
         // Function call whenever a page load is observed
         const callback = function(mutationsList) {
-            // Loop through lists of nodes that were added on update (this helps us check for child nodes)
-            for(const { addedNodes } of mutationsList) {
-                // Check each individual node added
-                for(const node of addedNodes) {
-                    if(!node.tagName) continue; // Skip if node is not a page element
+            if(enabled) {
+                // Loop through lists of nodes that were added on update (this helps us check for child nodes)
+                for(const { addedNodes } of mutationsList) {
+                    // Check each individual node added
+                    for(const node of addedNodes) {
+                        if(!node.tagName) continue; // Skip if node is not a page element
 
-                    // Look for images and add a random Sechi onto them
-                    if(node.tagName === 'IMG' && imageAlts.includes(node.alt)) {
-                        const index = getRandomImageIndex();
+                        // Look for images and add a random Sechi onto them
+                        if(node.tagName === 'IMG' && imageAlts.includes(node.alt)) {
+                            const index = getRandomImageIndex();
 
-                        // Get URL of random image
-                        let overlayURL = getOverlayURL(index);
-                        changeThumbnail(node, overlayURL);
+                            // Get URL of random image
+                            let overlayURL = getOverlayURL(index);
+                            changeThumbnail(node, overlayURL);
+                        }
                     }
                 }
             }
